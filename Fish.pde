@@ -56,7 +56,7 @@ class Fish {
   void display() {
     stroke(0);
     fill(175,0,255,255);
-    ellipse(location.x,location.y,mass*20,mass*20);
+    ellipse(mouseX,mouseY,mass*20,mass*20);
   }
   void checkWater(Liquid l) {
     if (location.x > width) {
