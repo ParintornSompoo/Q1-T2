@@ -12,8 +12,8 @@ class Food {
   boolean eaten(Fish fish){
     float x = location.array()[0];
     float y = location.array()[1];
-    float fish_x = fish.location.array()[0];
-    float fish_y = fish.location.array()[1];
+    float fish_x = mouseX;
+    float fish_y = mouseY;
     float fish_size = fish.mass*10;
     if ((fish_x - fish_size < x) && (x < fish_x + fish_size)) {
       if ((fish_y - fish_size < y) && (y < fish_y + fish_size)) {

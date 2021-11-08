@@ -42,12 +42,6 @@ class Fish {
     drag.mult(dragMagnitude);
     applyForce(drag);
   }
-  void attract(PVector foodLocation) {
-    PVector dir = PVector.sub(foodLocation,location);
-    dir.normalize();
-    dir.mult(0.04);
-    acceleration = dir;
-  }
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
@@ -77,16 +71,9 @@ class Fish {
   void drawGame(){
     background(255);
     liquid.display();
-    float shortest = sqrt(width*width + height*height);
-    PVector route;
     int f_i = 0;
     for (int i = 0; i < foods.size(); i++) {
       Food f = foods.get(i);
-      float distance = f.getDistance(fish);
-      if (shortest > distance) {
-        shortest = distance;
-        f_i = i;
-      }
       if (f.eaten(fish)) {
         foods.remove(i);
         fish.addMass(0.1);
@@ -109,10 +96,6 @@ class Fish {
       f.update();
       f.checkEdges();
       f.display();
-    }
-    if (foods.size() > 0) {
-      Food f = foods.get(f_i);
-      fish.attract(f.location);
     }
     fish.drag(liquid);
     fish.update();
