@@ -4,10 +4,10 @@ class Fish {
   PVector velocity;
   PVector acceleration;
   float mass = 1;
-  float maxMass = 3;
+  float maxMass = 5;
   Liquid liquid = new Liquid(0, height*1/5, width, height*4/5, 0.1);;
   Fish(){
-    location = new PVector(random(0,width),height/2);
+    location = new PVector(mouseX,mouseY);
     velocity = new PVector(0,0);
     acceleration = new PVector(0,0);
   }
@@ -71,15 +71,11 @@ class Fish {
   void drawGame(){
     background(255);
     liquid.display();
-    int f_i = 0;
     for (int i = 0; i < foods.size(); i++) {
       Food f = foods.get(i);
       if (f.eaten(fish)) {
         foods.remove(i);
         fish.addMass(0.1);
-        if (f_i > 0){
-          f_i -= 1;
-        }
       }
       if (f.isInside(liquid)) {
         f.drag(liquid);
