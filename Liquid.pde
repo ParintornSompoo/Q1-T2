@@ -8,6 +8,8 @@ class Liquid {
     h = h_;
     c = c_;
   }
+  
+  
   void display() {
     noStroke();
     fill(175);
